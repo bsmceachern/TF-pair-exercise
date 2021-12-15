@@ -52,3 +52,10 @@ resource "aws_route_table" "b-h-route-table" {
     Name = "main"
   }
 }
+
+#Route table to subnet assoc
+resource "aws_route_table_association" "table-to-subnet-public" {
+  subnet_id = aws_subnet.subnet-public.id
+  route_table_id = aws_route_table.b-h-route-table.id
+}
+
