@@ -5,6 +5,7 @@
 *.tfstate
 *.tfstate.*
 
+tform
 
 
 # Crash log files
