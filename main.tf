@@ -59,3 +59,25 @@ resource "aws_route_table_association" "table-to-subnet-public" {
   route_table_id = aws_route_table.b-h-route-table.id
 }
 
+#security group
+resource "aws_security_group" "B-H-SG" {
+  name = "web-sg"
+  description = "Allow TLS inbound traffic"
+  vpc_id = aws_vpc.B-H-VPC.id
+
+  #SSH
+  ingress {
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    cidr_blocks = [ "0.0.0.0/0" ]
+  }
+
+  #HTTP
+  ingress {
+    from_port = 80
+    to_port = 80
+    protocol = "tcp"
+    cidr_blocks = [ "0.0.0.0/0" ]
+  }
+}
