@@ -19,3 +19,15 @@ resource "aws_vpc" "B-H-VPC" {
     Name = "Branden-and-Hunters-VPC"
   }
 }
+
+#Subnet
+resource "aws_subnet" "subnet-public" {
+  vpc_id     = aws_vpc.B-H-VPC.id
+  cidr_block = "10.0.0.0/16"
+  map_public_ip_on_launch = "true"
+
+  tags = {
+    Name = "public-subnet"
+  }
+}
+
