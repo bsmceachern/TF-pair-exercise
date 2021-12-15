@@ -31,3 +31,10 @@ resource "aws_subnet" "subnet-public" {
   }
 }
 
+#Gateway
+resource "aws_internet_gateway" "B-H-IGW" {
+  vpc_id = aws_vpc.B-H-VPC.id
+tags = {
+    Name = "b-h-igw"
+  }
+}
